@@ -1,0 +1,25 @@
+# import modules
+from urllib.request import urlretrieve
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Download the image 
+urlretrieve('https://venngage-wordpress.s3.amazonaws.com/uploads/2020/06/image17.png', 'img.jpg')
+
+# Open the image and convert it to a NumPy array
+img = Image.open('img.jpg')
+img_array = np.array(img)
+
+# Display the image with a colormap and interpolation
+plt.imshow(img_array, cmap='viridis', interpolation='nearest', vmin=vmin, vmax=vmax)
+
+# Add a title to your viz
+plt.title('Funny Data Viz Meme')
+
+# Remove top and right spines for a clean look
+sns.despine()
+
+# Show the plot
+plt.show()
